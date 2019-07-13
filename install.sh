@@ -16,6 +16,12 @@ else
   ssh-keygen -t rsa -b 4096 -C email
 fi
 
+log "Installing ZSH"
+sudo apt-get -y install zsh
+
+log "Setting ZSH as default shell"
+chsh -s $(which zsh)
+
 log "Installing vim"
 sudo apt-get -y install vim
 
