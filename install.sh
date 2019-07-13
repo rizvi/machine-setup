@@ -50,10 +50,18 @@ else
   git clone git@github.com:sajadtorkamani/dotfiles.git $DOTFILES_DIR
 fi
 
+if [[ -e $HOME/.zshrc ]]; then
+  log ".zshrc already exists. Skipping"
+else
+  log "Setting up .zshrc"
+  sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
+fi
+
 if [[ -e $HOME/.bashrc ]]; then
   log ".bashrc already exists. Skipping"
 else
   log "Setting up .bashrc"
+  sudo ln -s $DOTFILES_DIR/bashrc $HOME/.bashrc
 fi
 
 
