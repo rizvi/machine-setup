@@ -16,5 +16,15 @@ else
   ssh-keygen -t rsa -b 4096 -C email
 fi
 
+log "Installing vim"
+sudo apt-get -y install vim
+
+log "Installing curl"
+sudo apt-get -y install curl
+
+log "Installing checkinstall"
+sudo apt-get -y install checkinstall
+
 log "ALL DONE!"
+
 
