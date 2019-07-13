@@ -1,11 +1,13 @@
 #!/bin/bash
 function log {
+  echo -e "\n"
   echo "============================================="
   echo $1
   echo "============================================="
 }
 
-$email="sajadtorkamani1@gmail.com"
+EMAIL="sajadtorkamani1@gmail.com"
+DOTFILES_DIR=$HOME/.config/dotfiles
 
 # log "Installing updates"
 # sudo apt-get update && sudo apt-get dist-upgrade
@@ -14,7 +16,7 @@ log "Generating SSH key"
 if [ -e $HOME/.ssh/id_rsa ]; then
   log "SSH keys already generated. Skipping."
 else
-  ssh-keygen -t rsa -b 4096 -C email
+  ssh-keygen -t rsa -b 4096 -C $EMAIL
 fi
 
 log "Installing git"
@@ -32,13 +34,26 @@ sudo apt-get -y install checkinstall
 log "Installing xcape"
 sudo apt-get -y install gcc make pkg-config libx11-dev libxtst-dev libxi-dev
 
-log "Installing ZSH"
 if [[ $SHELL =~ "zsh" ]]; then
   log "ZSH already set up. Skipping."
 else
+  log "Installing ZSH"
   sudo apt-get -y install zsh
   log "Setting ZSH as default shell"
   chsh -s $(which zsh)
+fi
+
+if [[ -d $DOTFILES_DIR ]]; then
+  log "dotfiles already installed. Skipping"
+else
+  log "Downloading dotfiles"
+  git clone git@github.com:sajadtorkamani/dotfiles.git $DOTFILES_DIR
+fi
+
+if [[ -e $HOME/.bashrc ]]; then
+  log ".bashrc already exists. Skipping"
+else
+  log "Setting up .bashrc"
 fi
 
 
