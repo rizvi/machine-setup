@@ -1,4 +1,5 @@
 # Machine setup
+Bunch of scripts that attempt to automate my setup of an Ubuntu development machine.
 
 ## `install.sh`
 This script will install necessary development packages & tools such as:
