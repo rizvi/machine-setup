@@ -13,6 +13,9 @@ function cmd_exists {
   command -v $1 > /dev/null 2>&1
 }
 
+function skip {
+ log "$1 already exists. Skipping"
+}
 
 # Variables
 EMAIL="sajadtorkamani1@gmail.com"
@@ -89,6 +92,13 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
   rm $HOME/.zshrc.pre-oh-my-zsh # Remove backup file created by Oh My Zsh install script
   sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
+fi
+
+if -e $HOME/.vimrc; then
+  skip ".vimrc"
+else
+  log "Setting up .vimrc"
+  sudo ln -s $DOTFILES_DIR/vimrc $HOME/.vimrc
 fi
 
 log "ALL DONE!"
