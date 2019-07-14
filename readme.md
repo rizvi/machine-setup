@@ -1,8 +1,12 @@
-The following steps assume a **fresh** installation of Ubuntu 18.04.2 Desktop. 
+# Machine setup
 
-- Download Firefox
-- Add LastPass extension
+## `install.sh`
+This script will install necessary development packages & tools such as:
+- Git
+- Vim
+- Curl
+- ZSH & Oh My Zsh
+- nvm & Node.js
+- rbenv & Ruby
 
-### Map Caps lock to act as Ctrl when used as modifier and Esc when pressed alone
-- Download Gnome Tweaks from Software Centre
-- Open Gnome Tweaks > Keyboard & Mouse > Additional Layout Options > Caps Lock behavior > Select Caps Lock is also a Ctrl
+It will also set up symbolic links to the dotfiles [here](https://github.com/sajadtorkamani/dotfiles)
