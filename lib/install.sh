@@ -130,6 +130,8 @@ if cmd_exists "rbenv"; then
   skip "rbenv"
 else
   git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
+  mkdir -p "$(rbenv root)"/plugins
+  git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 fi
 
 # TEMP_DEB=/tmp/mysql.deb
