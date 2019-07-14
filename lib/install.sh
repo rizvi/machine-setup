@@ -20,13 +20,16 @@ function skip {
 # Variables
 EMAIL="sajadtorkamani1@gmail.com"
 DOTFILES_DIR=$HOME/.config/dotfiles
+# The ruby version to install by default with rbenv
+DEFAULT_RUBY_VERSION="2.6.3"
 
 # log "Installing updates"
 # sudo apt-get update
 # sudo apt-get dist-upgrade
 
-log "Installing cmake"
-sudo apt-get -y install cmake
+log "Installing generic dependencies"
+sudo apt-get -y install cmake libssl-dev libreadline-dev zlib1g-dev
+sudo apt-get -y install mysql-client libmysqlclient-dev
 
 log "Generating SSH key"
 if [ -e $HOME/.ssh/id_rsa ]; then
@@ -132,7 +135,11 @@ else
   git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
   mkdir -p "$(rbenv root)"/plugins
   git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+  rbenv install $DEFAULT_RUBY_VERSION && rbenv global $DEFAULT_RUBY_VERSION
 fi
+
+log "Installing some useful gems"
+# gem install bundler
 
 # TEMP_DEB=/tmp/mysql.deb
 # wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb -O $TEMP_DEB
@@ -140,8 +147,8 @@ fi
 if cmd_exists "mysql"; then
   skip "mysql"
 else
-  sudo apt -y install mysql-server
-  sudo mysql_secure_installation
+  sudo apt-get -y install mysql-server
+  # sudo mysql_secure_installation
 fi
 
 
