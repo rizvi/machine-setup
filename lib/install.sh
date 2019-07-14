@@ -32,8 +32,6 @@ if [ -e $HOME/.ssh/id_rsa ]; then
   log "SSH keys already generated. Skipping."
 else
   ssh-keygen -t rsa -b 4096 -C $EMAIL
-  eval "$(ssh-agent -s)"
-  ssh-add $HOME/.ssh/id_rsa
 fi
 
 log "Installing git"
@@ -125,6 +123,12 @@ else
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt-get update && sudo apt-get install -y --no-install-recommends yarn
+fi
+
+if cmd_exists "rbenv"; then
+  skip "rbenv"
+else
+  git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
 fi
 
 log "ALL DONE!"
