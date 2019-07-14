@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Pretty print a message.
 function log {
   echo -e "\n"
   echo "============================================="
@@ -6,6 +8,13 @@ function log {
   echo "============================================="
 }
 
+# Check if a cmd exists.
+function cmd_exists {
+  command -v $1 > /dev/null 2>&1
+}
+
+
+# Variables
 EMAIL="sajadtorkamani1@gmail.com"
 DOTFILES_DIR=$HOME/.config/dotfiles
 
@@ -31,8 +40,17 @@ sudo apt-get -y install curl
 log "Installing checkinstall"
 sudo apt-get -y install checkinstall
 
-log "Installing xcape"
-sudo apt-get -y install gcc make pkg-config libx11-dev libxtst-dev libxi-dev
+if cmd_exists "xcape"; then
+  log "xcape already installed. Skipping"
+else
+  log "Installing xcape"
+  sudo apt-get -y install gcc make pkg-config libx11-dev libxtst-dev libxi-dev
+  TEMP_DIR=/tmp/xcape
+  git clone https://github.com/alols/xcape.git $TEMP_DIR
+  cd $TEMP_DIR && make 
+  sudo checkinstall -y
+  sudo rm -rf $TEMP_DIR
+fi
 
 if [[ $SHELL =~ "zsh" ]]; then
   log "ZSH already set up. Skipping."
