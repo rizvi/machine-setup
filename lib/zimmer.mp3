@@ -1,0 +1,13 @@
+--2019-07-14 17:21:20--  https://drive.google.com/file/d/1y6DETudJOQ6srrGnNqOW-RFNCH-jegJR/view?usp=sharing
+Resolving drive.google.com (drive.google.com)... 216.58.198.174, 2a00:1450:4009:818::200e
+Connecting to drive.google.com (drive.google.com)|216.58.198.174|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘view?usp=sharing’
+
+     0K .......... .......... .......... .......... .......... 1.37M
+    50K .......... .......... .......... .......... .......... 3.63M
+   100K .......... .........                                   1.34M=0.06s
+
+2019-07-14 17:21:21 (1.84 MB/s) - ‘view?usp=sharing’ saved [122504]
+
