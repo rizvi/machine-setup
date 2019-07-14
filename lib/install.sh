@@ -42,7 +42,7 @@ sudo apt-get -y install cmake libssl-dev libreadline-dev zlib1g-dev
 sudo apt-get -y install mysql-client libmysqlclient-dev
 
 if [ -e $HOME/.ssh/id_rsa ]; then
-  log "SSH keys already generated. Skipping."
+  skip "SSH keys"
 else
   log "Generating SSH key"
   ssh-keygen -t rsa -b 4096 -C $EMAIL
@@ -64,7 +64,7 @@ log "Installing xsel"
 sudo apt-get -y install xsel
 
 if cmd_exists "xcape"; then
-  log "xcape already installed. Skipping"
+  skip "xcape"
 else
   log "Installing xcape"
   sudo apt-get -y install gcc make pkg-config libx11-dev libxtst-dev libxi-dev
@@ -76,7 +76,7 @@ else
 fi
 
 if [[ $SHELL =~ "zsh" ]]; then
-  log "ZSH already set up. Skipping."
+  skip "ZSH"
 else
   log "Installing ZSH"
   sudo apt-get -y install zsh
@@ -85,28 +85,28 @@ else
 fi
 
 if [[ -d $DOTFILES_DIR ]]; then
-  log "dotfiles already installed. Skipping"
+  skip "dotfiles"
 else
   log "Downloading dotfiles"
   git clone git@github.com:sajadtorkamani/dotfiles.git $DOTFILES_DIR
 fi
 
 if [[ -e $HOME/.zshrc ]]; then
-  log ".zshrc already exists. Skipping"
+  skip ".zshrc"
 else
   log "Setting up .zshrc"
   sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
 fi
 
 if [[ -e $HOME/.bashrc ]]; then
-  log ".bashrc already exists. Skipping"
+  skip ".bashrc"
 else
   log "Setting up .bashrc"
   sudo ln -s $DOTFILES_DIR/bashrc $HOME/.bashrc
 fi
 
 if [[ -e $HOME/.oh-my-zsh ]]; then
-  log "Oh My Zsh already setup. Skipping"
+  skip "Oh My Zsh"
 else
   log "Installing Oh My Zsh"
   git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
@@ -162,5 +162,4 @@ fi
 # Finished!
 # ---------------------------------------------------
 log "ALL DONE!"
-
 
