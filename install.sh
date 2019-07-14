@@ -64,6 +64,14 @@ else
   sudo ln -s $DOTFILES_DIR/bashrc $HOME/.bashrc
 fi
 
+if [[ -e $HOME/.oh-my-zsh ]]; then
+  log "Oh My Zsh already setup. Skipping"
+else
+  log "Installing Oh My Zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+  rm $HOME/.zshrc.pre-oh-my-zsh # Remove backup file created by Oh My Zsh install script
+  sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
+fi
 
 log "ALL DONE!"
 
