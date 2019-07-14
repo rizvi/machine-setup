@@ -85,13 +85,16 @@ else
   sudo ln -s $DOTFILES_DIR/bashrc $HOME/.bashrc
 fi
 
-if [[ -e $HOME/.oh-my-zsh ]]; then
+if [ -e $HOME/.oh-my-zsh ]; then
   log "Oh My Zsh already setup. Skipping"
 else
-  log "Installing Oh My Zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
-  rm $HOME/.zshrc.pre-oh-my-zsh # Remove backup file created by Oh My Zsh install script
-  sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
+  # log "Installing Oh My Zsh"
+  # sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+  # rm $HOME/.zshrc.pre-oh-my-zsh # Remove backup file created by install script
+  # sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
+  # echo "fooooooo"
+  # sudo ln -s $DOTFILES_DIR/aliases $HOME/.oh-my-zsh/custom/aliases.zsh
+  sudo ln -s $DOTFILES_DIR/oh-my-zsh $HOME/.oh-my-zsh
 fi
 
 if -e $HOME/.vimrc; then
