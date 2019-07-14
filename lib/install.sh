@@ -22,7 +22,8 @@ EMAIL="sajadtorkamani1@gmail.com"
 DOTFILES_DIR=$HOME/.config/dotfiles
 
 # log "Installing updates"
-# sudo apt-get update && sudo apt-get dist-upgrade
+# sudo apt-get update
+# sudo apt-get dist-upgrade
 
 log "Installing cmake"
 sudo apt-get -y install cmake
@@ -130,6 +131,17 @@ if cmd_exists "rbenv"; then
 else
   git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
 fi
+
+# TEMP_DEB=/tmp/mysql.deb
+# wget https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb -O $TEMP_DEB
+# sudo dpkg -i $TEMP_DEB
+if cmd_exists "mysql"; then
+  skip "mysql"
+else
+  sudo apt -y install mysql-server
+  sudo mysql_secure_installation
+fi
+
 
 log "ALL DONE!"
 
