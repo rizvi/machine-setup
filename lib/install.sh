@@ -24,11 +24,16 @@ DOTFILES_DIR=$HOME/.config/dotfiles
 # log "Installing updates"
 # sudo apt-get update && sudo apt-get dist-upgrade
 
+log "Installing cmake"
+sudo apt-get -y install cmake
+
 log "Generating SSH key"
 if [ -e $HOME/.ssh/id_rsa ]; then
   log "SSH keys already generated. Skipping."
 else
   ssh-keygen -t rsa -b 4096 -C $EMAIL
+  eval "$(ssh-agent -s)"
+  ssh-add $HOME/.ssh/id_rsa
 fi
 
 log "Installing git"
@@ -42,6 +47,9 @@ sudo apt-get -y install curl
 
 log "Installing checkinstall"
 sudo apt-get -y install checkinstall
+
+log "Installing xsel"
+sudo apt-get -y install xsel
 
 if cmd_exists "xcape"; then
   log "xcape already installed. Skipping"
@@ -91,11 +99,6 @@ else
   log "Installing Oh My Zsh"
   git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
   sudo ln -s $DOTFILES_DIR/aliases $HOME/.oh-my-zsh/custom/aliases.zsh
-  # sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
-  # rm $HOME/.zshrc.pre-oh-my-zsh # Remove backup file created by install script
-  # sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
-  # echo "fooooooo"
-  # sudo ln -s $DOTFILES_DIR/oh-my-zsh $HOME/.oh-my-zsh
 fi
 
 if [[ -e $HOME/.vimrc ]]; then
@@ -103,6 +106,25 @@ if [[ -e $HOME/.vimrc ]]; then
 else
   log "Setting up .vimrc"
   sudo ln -s $DOTFILES_DIR/vimrc $HOME/.vimrc
+fi
+
+if [[ -e $HOME/.nvm ]]; then
+  skip "nvm"
+else
+  log "Installing nvm"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+fi
+
+# Some ubuntu versions have 'yarn' package installed by default
+# (https://github.com/yarnpkg/yarn/issues/2821)
+if [[ -e $HOME/.cache/yarn ]]; then
+  skip "yarn"
+else
+  log "Installing yarn"
+  sudo apt-get -y remove cmdtest yarn
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt-get update && sudo apt-get install -y --no-install-recommends yarn
 fi
 
 log "ALL DONE!"
