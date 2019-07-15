@@ -210,6 +210,14 @@ else
   log "Setting up .vim/"
   sudo ln -s $DOTFILES_DIR/vim $HOME/.vim
 fi
+
+if [[ -e $HOME/.gitignore_global ]]; then
+  skip ".gitignore_global"
+else
+  log "Setting up .gitignore_globa$HOME"
+  sudo ln -s $DOTFILES_DIR/gitignore_global $HOME/.gitignore_global
+  git config --global core.excludesfile $HOME/.gitignore_global
+fi
 # ---------------------------------------------------
 
 
