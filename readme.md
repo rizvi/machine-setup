@@ -11,7 +11,7 @@ This script will install necessary development packages & tools such as:
 - rbenv & Ruby
 - PHP & Composer
 - Nginx
-- MySQL 5.7
+- MySQL 5.7 & MySQL Workbench 8.0.16 
 
 It will also set up symbolic links to the dotfiles [here](https://github.com/sajadtorkamani/dotfiles).
 
