@@ -22,5 +22,5 @@ This script will install the following applications via [snap](https://github.co
 ## `npm_modules.sh`
 This script will install some handy global npm modules via yarn.
 
-## `vscode_extensions`
+## `vscode_extensions.sh`
 Install extensions for Visual Studio Code.
