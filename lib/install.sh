@@ -43,7 +43,6 @@ DEFAULT_PHP_VERSION="7.3" # The PHP version to install
 
 log "Installing generic dependencies"
 sudo apt-get -y install cmake libssl-dev libreadline-dev zlib1g-dev
-sudo apt-get -y install mysql-client libmysqlclient-dev
 
 if [ -e $HOME/.ssh/id_rsa ]; then
   skip "SSH keys"
@@ -151,7 +150,8 @@ if cmd_exists "mysql"; then
   skip "mysql"
 else
   log 'Installing MySQL 5.7'
-  sudo apt-get -y install mysql-server
+  sudo apt-get -y install mysql-client libmysqlclient-dev mysql-server
+
   sudo mysql_secure_installation
 fi
 
