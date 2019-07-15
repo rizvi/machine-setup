@@ -67,7 +67,7 @@ sudo apt-get -y install xsel
 log "Installing nginx"
 sudo apt-get -y install nginx
 
-if cmd_exists 'phpjkfjk'; then
+if cmd_exists "php"; then
   skip "PHP"
 else
   log "Installing $PHP_VERSION"
