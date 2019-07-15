@@ -228,8 +228,13 @@ fi
 
 sudo apt-get -y install mysql-workbench-community
 
-# Increase watch limit
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+# Increase watch count
+if [[ "$(cat /proc/sys/fs/inotify/max_user_watches)" =~ "524288" ]]; then
+ skip "Watch count already increased"
+else
+  log "Increasing watch count"
+  echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+fi
 
 # ---------------------------------------------------
 # Finished!
