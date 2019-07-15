@@ -120,6 +120,13 @@ else
   sudo ln -s $DOTFILES_DIR/vimrc $HOME/.vimrc
 fi
 
+if [[ -e $HOME/.vim ]]; then
+  skip ".vim"
+else
+  log "Setting up .vim/"
+  sudo ln -s $DOTFILES_DIR/vim $HOME/.vim
+fi
+
 if [[ -e $HOME/.nvm ]]; then
   skip "nvm"
 else
