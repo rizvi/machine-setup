@@ -1,3 +1,5 @@
+#!/bin/bash
+
 code --install-extension vscodevim.vim 
 code --install-extension ms-vscode.vscode-typescript-tslint-plugin
 code --install-extension dbaeumer.vscode-eslint
