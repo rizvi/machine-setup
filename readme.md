@@ -18,3 +18,6 @@ This script will install the following applications via [snap](https://github.co
 - Visual Studio Code
 - RubyMine
 - Postman
+
+## `npm_modules.sh`
+This script will install some handy global npm modules via yarn.
