@@ -27,7 +27,8 @@ function skip {
 # ---------------------------------------------------
 EMAIL="sajadtorkamani1@gmail.com"
 DOTFILES_DIR=$HOME/.config/dotfiles
-DEFAULT_RUBY_VERSION="2.6.3" # The ruby version to install by default
+DEFAULT_RUBY_VERSION="2.6.3" # The Ruby version to install
+DEFAULT_PHP_VERSION="7.3" # The PHP version to install
 
 
 # ---------------------------------------------------
@@ -62,6 +63,16 @@ sudo apt-get -y install checkinstall
 
 log "Installing xsel"
 sudo apt-get -y install xsel
+
+
+if cmd_exists 'php'; then
+  skip "PHP"
+else
+  log "Installing $PHP_VERSION"
+  sudo add-apt-repository ppa:ondrej/php
+  sudo apt-get update
+  sudo apt-get install $PHP_VERSION
+fi
 
 if cmd_exists "xcape"; then
   skip "xcape"
