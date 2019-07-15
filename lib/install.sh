@@ -64,14 +64,16 @@ sudo apt-get -y install checkinstall
 log "Installing xsel"
 sudo apt-get -y install xsel
 
+log "Installing nginx"
+sudo apt-get -y install nginx
 
-if cmd_exists 'php'; then
+if cmd_exists 'phpjkfjk'; then
   skip "PHP"
 else
   log "Installing $PHP_VERSION"
   sudo add-apt-repository ppa:ondrej/php
   sudo apt-get update
-  sudo apt-get install $PHP_VERSION
+  sudo apt-get -y install "php$PHP_VERSION" "php$PHP_VERSION-mysql" "php$PHP_VERSION-fpm"
 fi
 
 if cmd_exists "xcape"; then
@@ -114,6 +116,13 @@ if [[ -e $HOME/.bashrc ]]; then
 else
   log "Setting up .bashrc"
   sudo ln -s $DOTFILES_DIR/bashrc $HOME/.bashrc
+fi
+
+if [[ -e $HOME/.inputrc ]]; then
+  skip ".inputrc"
+else
+  log "Setting up .inputrc"
+  sudo ln -s $DOTFILES_DIR/inputrc $HOME/.inputrc
 fi
 
 if [[ -e $HOME/.oh-my-zsh ]]; then
