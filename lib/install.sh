@@ -76,6 +76,24 @@ else
   sudo apt-get -y install "php$PHP_VERSION" "php$PHP_VERSION-mysql" "php$PHP_VERSION-fpm"
 fi
 
+if cmd_exists "composer"; then
+  skip "Composer"
+else
+  log "Installing composer"
+  EXPECTED_SIGNATURE="$(wget -q -O - https://composer.github.io/installer.sig)"
+  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+  if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]; then
+    >&2 echo 'ERROR: Invalid composer installer signature'
+    rm composer-setup.php
+    exit 1
+  fi
+
+  sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
+  rm composer-setup.php
+fi
+
 if cmd_exists "xcape"; then
   skip "xcape"
 else
