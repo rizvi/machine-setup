@@ -7,8 +7,11 @@ This script will install necessary development packages & tools such as:
 - Vim
 - Curl
 - ZSH & Oh My Zsh
-- nvm & Node.js
+- nvm & Node.js & Yarn
 - rbenv & Ruby
+- PHP & Composer
+- Nginx
+- MySQL 5.7
 
 It will also set up symbolic links to the dotfiles [here](https://github.com/sajadtorkamani/dotfiles).
 
