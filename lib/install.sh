@@ -20,6 +20,7 @@ function cmd_exists {
 function skip {
  log "$1 already exists. Skipping"
 }
+# ---------------------------------------------------
 
 
 # ---------------------------------------------------
@@ -29,11 +30,13 @@ EMAIL="sajadtorkamani1@gmail.com"
 DOTFILES_DIR=$HOME/.config/dotfiles
 DEFAULT_RUBY_VERSION="2.6.3" # The Ruby version to install
 DEFAULT_PHP_VERSION="7.3" # The PHP version to install
+# ---------------------------------------------------
 
 
 # ---------------------------------------------------
-# Start installing the good stuff!
+# Install packages
 # ---------------------------------------------------
+# Uncomment if running for the first time.
 # log "Installing updates"
 # sudo apt-get update
 # sudo apt-get dist-upgrade
@@ -115,6 +118,49 @@ else
   chsh -s $(which zsh)
 fi
 
+if [[ -e $HOME/.nvm ]]; then
+  skip "nvm"
+else
+  log "Installing nvm"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+fi
+
+# Some ubuntu versions have 'yarn' package installed by default
+# (https://github.com/yarnpkg/yarn/issues/2821)
+if [[ -e $HOME/.cache/yarn ]]; then
+  skip "yarn"
+else
+  log "Installing yarn"
+  sudo apt-get -y remove cmdtest yarn
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt-get update && sudo apt-get install -y --no-install-recommends yarn
+fi
+
+if cmd_exists "rbenv"; then
+  skip "rbenv"
+else
+  git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
+  mkdir -p "$(rbenv root)"/plugins
+  git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+  rbenv install $DEFAULT_RUBY_VERSION && rbenv global $DEFAULT_RUBY_VERSION
+  gem install bundler
+fi
+
+if cmd_exists "mysql"; then
+  skip "mysql"
+else
+  log 'Installing MySQL 5.7'
+  sudo apt-get -y install mysql-server
+  sudo mysql_secure_installation
+fi
+
+sudo apt-get -y install mysql-workbench-community
+
+
+# ---------------------------------------------------
+# Setup dotfiles
+# ---------------------------------------------------
 if [[ -d $DOTFILES_DIR ]]; then
   skip "dotfiles"
 else
@@ -164,8 +210,12 @@ else
   log "Setting up .vim/"
   sudo ln -s $DOTFILES_DIR/vim $HOME/.vim
 fi
+# ---------------------------------------------------
 
 
+# ---------------------------------------------------
+# Configure VSCode
+# ---------------------------------------------------
 VSCODE_CONFIG_DIR="$HOME/.config/Code/User"
 if [[ -e $VSCODE_CONFIG_DIR/keybindings.json ]]; then
   skip "$VSCODE_CONFIG_DIR/keybindings.json"
@@ -187,47 +237,12 @@ else
   log "Setting up VSCode snippets"
   sudo ln -s $DOTFILES_DIR/vscode/snippets $VSCODE_CONFIG_DIR/snippets
 fi
+# ---------------------------------------------------
 
 
-if [[ -e $HOME/.nvm ]]; then
-  skip "nvm"
-else
-  log "Installing nvm"
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-fi
-
-# Some ubuntu versions have 'yarn' package installed by default
-# (https://github.com/yarnpkg/yarn/issues/2821)
-if [[ -e $HOME/.cache/yarn ]]; then
-  skip "yarn"
-else
-  log "Installing yarn"
-  sudo apt-get -y remove cmdtest yarn
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  sudo apt-get update && sudo apt-get install -y --no-install-recommends yarn
-fi
-
-if cmd_exists "rbenv"; then
-  skip "rbenv"
-else
-  git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
-  mkdir -p "$(rbenv root)"/plugins
-  git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-  rbenv install $DEFAULT_RUBY_VERSION && rbenv global $DEFAULT_RUBY_VERSION
-  gem install bundler
-fi
-
-if cmd_exists "mysql"; then
-  skip "mysql"
-else
-  log 'Installing MySQL 5.7'
-  sudo apt-get -y install mysql-server
-  sudo mysql_secure_installation
-fi
-
-sudo apt-get -y install mysql-workbench-community
-
+# ---------------------------------------------------
+# Misc system configuration
+# ---------------------------------------------------
 # Increase watch count
 if [[ "$(cat /proc/sys/fs/inotify/max_user_watches)" =~ "524288" ]]; then
  skip "Watch count already increased"
@@ -235,6 +250,7 @@ else
   log "Increasing watch count"
   echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 fi
+# ---------------------------------------------------
 
 # ---------------------------------------------------
 # Finished!
