@@ -226,6 +226,11 @@ else
   sudo mysql_secure_installation
 fi
 
+sudo apt-get -y install mysql-workbench-community
+
+# Increase watch limit
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 # ---------------------------------------------------
 # Finished!
 # ---------------------------------------------------
