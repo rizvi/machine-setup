@@ -42,3 +42,12 @@ else
   log "Generating SSH key"
   ssh-keygen -t rsa -b 4096 -C $EMAIL
 fi
+
+if [[ $SHELL =~ "zsh" ]]; then
+  skip "ZSH"
+else
+  log "Installing ZSH"
+  brew install zsh zsh-completions
+  sudo echo "$(which zsh)" | sudo tee -a /etc/shells
+  chsh -s $(which zsh)
+fi
