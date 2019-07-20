@@ -35,6 +35,7 @@ DEFAULT_NODE_VERSION="v10.16.0"
 if cmd_exists "brew"; then
   skip "Homebrew"
 else
+  log "Installing Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -72,19 +73,3 @@ else
   nvm install $DEFAULT_NODE_VERSION
 fi
 
-# ---------------------------------------------------
-# Dotfiles
-# ---------------------------------------------------
-if [[ -d $DOTFILES_DIR ]]; then
-  skip "dotfiles"
-else
-  log "Downloading dotfiles"
-  git clone git@github.com:sajadtorkamani/dotfiles.git $DOTFILES_DIR
-fi
-
-if [[ -e $HOME/.zshrc ]]; then
-  skip ".zshrc"
-else
-  log "Setting up .zshrc"
-  ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
-fi
