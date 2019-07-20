@@ -1,7 +1,8 @@
 # Machine setup
-Bunch of scripts that attempt to automate my setup of an Ubuntu development machine.
+Bunch of scripts that attempt to automate my setup of a Linux / macOS development machine.
 
-## `install.sh`
+## Linux
+### `packages.sh`
 This script will install necessary development packages & tools such as:
 - Git
 - Vim
@@ -15,12 +16,14 @@ This script will install necessary development packages & tools such as:
 
 It will also set up symbolic links to the dotfiles [here](https://github.com/sajadtorkamani/dotfiles).
 
-## `snaps.sh`
+### `snaps.sh`
 This script will install the following applications via [snap](https://github.com/sajadtorkamani/dotfiles): 
 - Firefox
 - Visual Studio Code
 - RubyMine
 - Postman
+
+
 
 ## `npm_modules.sh`
 This script will install some handy global npm modules via yarn.
