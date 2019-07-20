@@ -27,7 +27,6 @@ function skip {
 # Variables
 # ---------------------------------------------------
 EMAIL="sajadtorkamani1@gmail.com"
-DOTFILES_DIR=$HOME/.config/dotfiles
 DEFAULT_RUBY_VERSION="2.6.3" # The Ruby version to install
 DEFAULT_PHP_VERSION="7.3" # The PHP version to install
 # ---------------------------------------------------
@@ -156,96 +155,6 @@ else
 fi
 
 sudo apt-get -y install mysql-workbench-community
-
-
-# ---------------------------------------------------
-# Setup dotfiles
-# ---------------------------------------------------
-if [[ -d $DOTFILES_DIR ]]; then
-  skip "dotfiles"
-else
-  log "Downloading dotfiles"
-  git clone git@github.com:sajadtorkamani/dotfiles.git $DOTFILES_DIR
-fi
-
-if [[ -e $HOME/.zshrc ]]; then
-  skip ".zshrc"
-else
-  log "Setting up .zshrc"
-  sudo ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
-fi
-
-if [[ -e $HOME/.bashrc ]]; then
-  skip ".bashrc"
-else
-  log "Setting up .bashrc"
-  sudo ln -s $DOTFILES_DIR/bashrc $HOME/.bashrc
-fi
-
-if [[ -e $HOME/.inputrc ]]; then
-  skip ".inputrc"
-else
-  log "Setting up .inputrc"
-  sudo ln -s $DOTFILES_DIR/inputrc $HOME/.inputrc
-fi
-
-if [[ -e $HOME/.oh-my-zsh ]]; then
-  skip "Oh My Zsh"
-else
-  log "Installing Oh My Zsh"
-  git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-  sudo ln -s $DOTFILES_DIR/aliases $HOME/.oh-my-zsh/custom/aliases.zsh
-fi
-
-if [[ -e $HOME/.vimrc ]]; then
-  skip ".vimrc"
-else
-  log "Setting up .vimrc"
-  sudo ln -s $DOTFILES_DIR/vimrc $HOME/.vimrc
-fi
-
-if [[ -e $HOME/.vim ]]; then
-  skip ".vim"
-else
-  log "Setting up .vim/"
-  sudo ln -s $DOTFILES_DIR/vim $HOME/.vim
-fi
-
-if [[ -e $HOME/.gitignore_global ]]; then
-  skip ".gitignore_global"
-else
-  log "Setting up .gitignore_globa$HOME"
-  sudo ln -s $DOTFILES_DIR/gitignore_global $HOME/.gitignore_global
-  git config --global core.excludesfile $HOME/.gitignore_global
-fi
-# ---------------------------------------------------
-
-
-# ---------------------------------------------------
-# Configure VSCode
-# ---------------------------------------------------
-VSCODE_CONFIG_DIR="$HOME/.config/Code/User"
-if [[ -e $VSCODE_CONFIG_DIR/keybindings.json ]]; then
-  skip "$VSCODE_CONFIG_DIR/keybindings.json"
-else
-  log "Setting up VSCode keybindings"
-  sudo ln -s $DOTFILES_DIR/vscode/keybindings.json $VSCODE_CONFIG_DIR/keybindings.json
-fi
-
-if [[ -e $VSCODE_CONFIG_DIR/settings.json ]]; then
-  skip "$VSCODE_CONFIG_DIR/settings.json"
-else
-  log "Setting up VSCode settings.json"
-  sudo ln -s $DOTFILES_DIR/vscode/settings.json $VSCODE_CONFIG_DIR/settings.json
-fi
-
-if [[ -d $VSCODE_CONFIG_DIR/snippets ]]; then
-  skip "$VSCODE_CONFIG_DIR/snippets"
-else
-  log "Setting up VSCode snippets"
-  sudo ln -s $DOTFILES_DIR/vscode/snippets $VSCODE_CONFIG_DIR/snippets
-fi
-# ---------------------------------------------------
 
 
 # ---------------------------------------------------
