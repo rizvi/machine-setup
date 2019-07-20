@@ -84,4 +84,5 @@ brew install wget
 brew install mysql
 brew install php
 brew install composer
+brew install nginx
 
