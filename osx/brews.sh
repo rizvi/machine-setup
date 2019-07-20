@@ -82,3 +82,5 @@ else
   brew install yarn --ignore-dependencies
 fi
 
+brew install mysql
+
