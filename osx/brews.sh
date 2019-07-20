@@ -83,4 +83,5 @@ else
 fi
 
 brew install mysql
+brew install php
 
