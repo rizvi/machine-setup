@@ -39,6 +39,8 @@ else
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+brew install wget
+
 if [ -e $HOME/.ssh/id_rsa ]; then
   skip "SSH keys"
 else
@@ -71,5 +73,12 @@ else
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   nvm install $DEFAULT_NODE_VERSION
+fi
+
+if cmd_exists "yarn"; then
+  skip "yarn"
+else
+  log "Installing yarn"
+  brew install yarn --ignore-dependencies
 fi
 
