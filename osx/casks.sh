@@ -4,3 +4,4 @@ brew cask install google-chrome
 brew cask install spectacle
 brew cask install visual-studio-code
 brew cask install karabiner-elements
+brew cask install mysqlworkbench
