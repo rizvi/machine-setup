@@ -30,7 +30,11 @@ DOTFILES_DIR=$HOME/.config/dotfiles
 
 
 # Install Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if cmd_exists "brew"; then
+  skip "Homebrew"
+else
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 if [ -e $HOME/.ssh/id_rsa ]; then
   skip "SSH keys"
