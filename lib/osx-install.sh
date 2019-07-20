@@ -27,6 +27,7 @@ function skip {
 # ---------------------------------------------------
 EMAIL="sajadtorkamani1@gmail.com"
 DOTFILES_DIR=$HOME/.config/dotfiles
+DEFAULT_RUBY_VERSION="2.6.3" # The Ruby version to install
 
 
 # Install Homebrew
@@ -50,4 +51,12 @@ else
   brew install zsh zsh-completions
   sudo echo "$(which zsh)" | sudo tee -a /etc/shells
   chsh -s $(which zsh)
+fi
+
+if cmd_exists "rbenv"; then
+  skip "rbenv"
+else
+  brew install rbenv
+  rbenv install $DEFAULT_RUBY_VERSION && rbenv global $DEFAULT_RUBY_VERSION
+  gem install bundler
 fi
