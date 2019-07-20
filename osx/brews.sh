@@ -39,8 +39,6 @@ else
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-brew install wget
-
 if [ -e $HOME/.ssh/id_rsa ]; then
   skip "SSH keys"
 else
@@ -82,6 +80,8 @@ else
   brew install yarn --ignore-dependencies
 fi
 
+brew install wget
 brew install mysql
 brew install php
+brew install composer
 
