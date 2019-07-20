@@ -28,6 +28,7 @@ function skip {
 EMAIL="sajadtorkamani1@gmail.com"
 DOTFILES_DIR=$HOME/.config/dotfiles
 DEFAULT_RUBY_VERSION="2.6.3" # The Ruby version to install
+DEFAULT_NODE_VERSION="v10.16.0"
 
 
 # Install Homebrew
@@ -59,4 +60,31 @@ else
   brew install rbenv
   rbenv install $DEFAULT_RUBY_VERSION && rbenv global $DEFAULT_RUBY_VERSION
   gem install bundler
+fi
+
+if [[ -e $HOME/.nvm ]]; then
+  skip "nvm"
+else
+  log "Installing nvm"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  nvm install $DEFAULT_NODE_VERSION
+fi
+
+# ---------------------------------------------------
+# Dotfiles
+# ---------------------------------------------------
+if [[ -d $DOTFILES_DIR ]]; then
+  skip "dotfiles"
+else
+  log "Downloading dotfiles"
+  git clone git@github.com:sajadtorkamani/dotfiles.git $DOTFILES_DIR
+fi
+
+if [[ -e $HOME/.zshrc ]]; then
+  skip ".zshrc"
+else
+  log "Setting up .zshrc"
+  ln -s $DOTFILES_DIR/zshrc $HOME/.zshrc
 fi
