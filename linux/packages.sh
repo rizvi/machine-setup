@@ -164,6 +164,8 @@ sudo apt-get -y install mysql-workbench-community
 if cmd_exists "docker"; then
     skip "docker"
 else
+  log 'Installing Docker'
+
   sudo apt-get install -y \
       apt-transport-https \
       ca-certificates \
@@ -181,9 +183,13 @@ else
   sudo apt-get update
   sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
-  sudo groupadd docker
+  # Allow non-root usage
+  sudo groupadd docker > /dev/null 2>&1
   sudo usermod -aG docker $USER
-  newgrp docker
+
+  # Install docker-compose
+  sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
 fi
 # ---------------------------------------------------
 
