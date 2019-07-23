@@ -87,4 +87,11 @@ else
   ln -s $DOTFILES_DIR/gitignore_global $HOME/.gitignore_global
   git config --global core.excludesfile $HOME/.gitignore_global
 fi
+
+if [[ -e $HOME/.ssh/config ]]; then
+  skip "ssh config"
+else
+  log "Setting up ssh config"
+  ln -s $DOTFILES_DIR/ssh_config $HOME/.ssh/config
+fi
 # ---------------------------------------------------
