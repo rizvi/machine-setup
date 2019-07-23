@@ -10,3 +10,4 @@ brew cask install visual-studio-code
 brew cask install phpstorm
 brew cask install webstorm
 brew cask install postman
+brew cask install sourcetree
