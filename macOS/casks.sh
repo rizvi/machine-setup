@@ -2,6 +2,7 @@
 
 brew cask install alfred
 brew cask install clipy
+brew cask install docker
 brew cask install google-chrome
 brew cask install karabiner-elements
 brew cask install mysqlworkbench
