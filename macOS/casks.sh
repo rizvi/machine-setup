@@ -13,3 +13,5 @@ brew cask install sourcetree
 brew cask install spectacle
 brew cask install visual-studio-code
 brew cask install webstorm
+brew cask install rubymine
+brew cask install virtualbox
