@@ -81,6 +81,7 @@ else
 fi
 
 brew install wget
+brew install openssl
 brew install mysql
 brew install php
 brew install composer
