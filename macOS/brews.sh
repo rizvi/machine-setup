@@ -88,4 +88,6 @@ brew install composer
 # brew install nginx
 # brew install lynx
 brew install httpd
+brew install youtube-dl
+brew install ffmpeg
 
