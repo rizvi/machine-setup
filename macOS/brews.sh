@@ -80,14 +80,12 @@ else
   brew install yarn --ignore-dependencies
 fi
 
-brew install wget
-brew install openssl
-brew install mysql
-brew install php
 brew install composer
-# brew install nginx
-# brew install lynx
-brew install httpd
-brew install youtube-dl
 brew install ffmpeg
-
+brew install httpd
+brew install mysql
+brew install openssl
+brew install php
+brew install tree
+brew install wget
+brew install youtube-dl
