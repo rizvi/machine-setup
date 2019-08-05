@@ -9,6 +9,7 @@ brew cask install karabiner-elements
 brew cask install mysqlworkbench
 brew cask install phpstorm
 brew cask install postman
+brew cask install pycharm
 brew cask install sequel-pro
 brew cask install sourcetree
 brew cask install spectacle
@@ -16,4 +17,5 @@ brew cask install visual-studio-code
 brew cask install webstorm
 brew cask install rider
 brew cask install rubymine
+brew cask install staruml
 brew cask install virtualbox

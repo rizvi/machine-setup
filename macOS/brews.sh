@@ -83,6 +83,7 @@ fi
 brew install composer
 brew install ffmpeg
 brew install httpd
+brew install hub
 brew install mysql
 brew install openssl
 brew install php
