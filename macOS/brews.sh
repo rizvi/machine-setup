@@ -80,13 +80,17 @@ else
   brew install yarn --ignore-dependencies
 fi
 
+pip3 install awscli --upgrade --user
+
 brew install composer
 brew install ffmpeg
 brew install httpd
 brew install hub
+brew install jq
 brew install mysql
 brew install openssl
 brew install php
+brew install python
 brew install tree
 brew install wget
 brew install youtube-dl
