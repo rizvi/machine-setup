@@ -80,11 +80,12 @@ else
   ln -s $DOTFILES_DIR/vim $HOME/.vim
 fi
 
-if [[ -e $HOME/.tmux ]]; then
-  skip ".tmux"
+if [[ -e $HOME/.tmux.conf ]]; then
+  skip ".tmux.conf"
 else
   log "Setting up .tmux"
-  ln -s $DOTFILES_DIR/tmux $HOME/.tmux
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+  ln -s $DOTFILES_DIR/tmux.conf $HOME/.tmux.conf
 fi
 
 if [[ -e $HOME/.gitignore_global ]]; then
