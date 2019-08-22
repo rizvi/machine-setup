@@ -21,6 +21,15 @@ function skip {
  log "$1 already exists. Skipping"
 }
 
+function install_formula {
+  if cmd_exists $1; then
+    skip $1
+  else
+    log "Installing $1"
+    brew install $1
+  fi
+}
+
 
 # ---------------------------------------------------
 # Variables
@@ -82,15 +91,17 @@ fi
 
 pip3 install awscli --upgrade --user
 
-brew install composer
-brew install ffmpeg
-brew install httpd
-brew install hub
-brew install jq
-brew install mysql
-brew install openssl
-brew install php
-brew install python
-brew install tree
-brew install wget
-brew install youtube-dl
+install_formula composer
+install_formula ffmpeg
+install_formula httpd
+install_formula hub
+install_formula jq
+install_formula mysql
+install_formula nginx
+install_formula openssl
+install_formula php
+install_formula python
+install_formula tree
+install_formula tmux
+install_formula wget
+install_formula youtube-dl
