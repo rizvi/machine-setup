@@ -16,11 +16,12 @@ function cmd_exists {
   command -v $1 > /dev/null 2>&1
 }
 
-# Log a skiping message.
+# Log a skipping message.
 function skip {
  log "$1 already exists. Skipping"
 }
 
+# Install brew formula
 function install_formula {
   if cmd_exists $1; then
     skip $1
