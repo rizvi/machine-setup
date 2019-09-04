@@ -16,5 +16,3 @@ function cmd_exists {
 function skip {
  echo "$1 already setup"
 }
-
-
