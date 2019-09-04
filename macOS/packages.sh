@@ -5,6 +5,16 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
 source $DIR/../config/variables.sh
 source $DIR/../lib/utils.sh
 
+# Install brew formula
+function install_formula {
+  if cmd_exists $1; then
+    skip $1
+  else
+    log "Installing $1"
+    brew install $1
+  fi
+}
+
 # --------------------------------------------------
 # Homebrew
 # --------------------------------------------------
