@@ -82,9 +82,10 @@ fi
 # --------------------------------------------------
 # SSH config
 # --------------------------------------------------
-if [[ -e $HOME/.ssh/config ]]; then
-  skip "ssh config"
-else
-  log "Setting up ssh config"
-  ln -s $DOTFILES_DIR/ssh_config $HOME/.ssh/config
-fi
+# TODO: the config needs to be different for macOS vs linux
+# if [[ -e $HOME/.ssh/config ]]; then
+#   skip "ssh config"
+# else
+#   log "Setting up ssh config"
+#   ln -s $DOTFILES_DIR/ssh_config $HOME/.ssh/config
+# fi

@@ -25,6 +25,8 @@ if [[ -e $HOME/.ssh/id_rsa ]]; then
 else
   log "Generating SSH key"
   ssh-keygen -t rsa -b 4096 -C $EMAIL
+  eval "$(ssh-agent -s)"
+  ssh-add -K ~/.ssh/id_rsa
 fi
 
 # --------------------------------------------------
