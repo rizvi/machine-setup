@@ -90,6 +90,7 @@ else
   brew install yarn --ignore-dependencies
 fi
 
+
 pip3 install awscli --upgrade --user
 
 install_formula composer
@@ -100,6 +101,7 @@ install_formula jq
 install_formula mysql
 install_formula nginx
 install_formula openssl
+install_formula passenger
 install_formula php
 install_formula python
 install_formula tree
