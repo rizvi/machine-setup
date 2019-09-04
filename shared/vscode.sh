@@ -1,64 +1,44 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# ---------------------------------------------------
-# Utility functions
-# ---------------------------------------------------
-# Pretty print a message.
-function log {
-  echo -e "\n"
-  echo "============================================="
-  echo $1
-  echo "============================================="
-}
-
-# Check if a cmd exists.
-function cmd_exists {
-  command -v $1 > /dev/null 2>&1
-}
-
-# Log a skiping message.
-function skip {
- log "$1 already exists. Skipping"
-}
-# ---------------------------------------------------
+# --------------------------------------------------
+# Load dependencies
+# --------------------------------------------------
+cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
+source $cwd/config/variables.sh
+source $cwd/lib/utils.sh
 
 # ---------------------------------------------------
 # Variables
 # ---------------------------------------------------
-DOTFILES_DIR="$HOME/.config/dotfiles"
 if [[ `uname` == 'Linux' ]]; then
-  CONFIG_DIR="$HOME/.config/Code/User"
+  vscode_config_dir="$HOME/.config/Code/User"
 else
-  CONFIG_DIR="$HOME/Library/Application Support/Code/User"
+  vscode_config_dir="$HOME/Library/Application Support/Code/User"
 fi
-
-log "$CONFIG_DIR"
 
 # ---------------------------------------------------
 # Copy settings
 # ---------------------------------------------------
-if [[ -e "$CONFIG_DIR/keybindings.json" ]]; then
-  skip "$CONFIG_DIR/keybindings.json"
+if [[ -e "$vscode_config_dir/keybindings.json" ]]; then
+  skip "$vscode_config_dir/keybindings.json"
 else
   log "Setting up VSCode keybindings"
-  ln -s "$DOTFILES_DIR/vscode/keybindings.json" "$CONFIG_DIR/keybindings.json"
+  ln -s "$DOTFILES_DIR/vscode/keybindings.json" "$vscode_config_dir/keybindings.json"
 fi
 
-if [[ -e "$CONFIG_DIR/settings.json" ]]; then
-  skip "$CONFIG_DIR/settings.json"
+if [[ -e "$vscode_config_dir/settings.json" ]]; then
+  skip "$vscode_config_dir/settings.json"
 else
   log "Setting up VSCode settings.json"
-  ln -s "$DOTFILES_DIR/vscode/settings.json" "$CONFIG_DIR/settings.json"
+  ln -s "$DOTFILES_DIR/vscode/settings.json" "$vscode_config_dir/settings.json"
 fi
 
-if [[ -d "$CONFIG_DIR/snippets" ]]; then
-  skip "$CONFIG_DIR/snippets"
+if [[ -d "$vscode_config_dir/snippets" ]]; then
+  skip "$vscode_config_dir/snippets"
 else
   log "Setting up VSCode snippets"
-  ln -s "$DOTFILES_DIR/vscode/snippets" "$CONFIG_DIR/snippets"
+  ln -s "$DOTFILES_DIR/vscode/snippets" "$vscode_config_dir/snippets"
 fi
-# ---------------------------------------------------
-
 
 # ---------------------------------------------------
 # Install extensions
@@ -70,4 +50,3 @@ code --install-extension equinusocio.vsc-material-theme
 code --install-extension pkief.material-icon-theme 
 code --install-extension esbenp.prettier-vscode
 code --install-extension jpoissonnier.vscode-styled-components
-# ---------------------------------------------------

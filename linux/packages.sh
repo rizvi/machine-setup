@@ -1,73 +1,58 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# ---------------------------------------------------
-# Utility functions
-# ---------------------------------------------------
-# Pretty print a message.
-function log {
-  echo -e "\n"
-  echo "============================================="
-  echo $1
-  echo "============================================="
-}
+# --------------------------------------------------
+# Load dependencies
+# --------------------------------------------------
+cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
+source $cwd/../shared/config/variables.sh
+source $cwd/../shared/lib/utils.sh
 
-# Check if a cmd exists.
-function cmd_exists {
-  command -v $1 > /dev/null 2>&1
-}
+# --------------------------------------------------
+# Update package cache
+# --------------------------------------------------
+sudo apt-get update
 
-# Log a skiping message.
-function skip {
- log "$1 already exists. Skipping"
-}
-# ---------------------------------------------------
-
-
-# ---------------------------------------------------
-# Variables
-# ---------------------------------------------------
-EMAIL="sajadtorkamani1@gmail.com"
-DEFAULT_RUBY_VERSION="2.6.3" # The Ruby version to install
-DEFAULT_PHP_VERSION="7.3" # The PHP version to install
-# ---------------------------------------------------
-
-
-# ---------------------------------------------------
-# Install packages
-# ---------------------------------------------------
-# Uncomment if running for the first time.
-# log "Installing updates"
-# sudo apt-get update
+# --------------------------------------------------
+# Upgrade system
+# --------------------------------------------------
 # sudo apt-get dist-upgrade
 
+# --------------------------------------------------
+# Generic dependencies
+# --------------------------------------------------
 log "Installing generic dependencies"
 sudo apt-get -y install cmake libssl-dev libreadline-dev zlib1g-dev
 
-if [ -e $HOME/.ssh/id_rsa ]; then
+# --------------------------------------------------
+# SSH
+# --------------------------------------------------
+if [[ -e $HOME/.ssh/id_rsa ]]; then
   skip "SSH keys"
 else
   log "Generating SSH key"
   ssh-keygen -t rsa -b 4096 -C $EMAIL
 fi
 
+# --------------------------------------------------
+# git
+# vim
+# curl
+# checkinstall
+# xsel
+# nginx
+# --------------------------------------------------
 log "Installing git"
-sudo apt-get -y install git
+sudo apt-get -y install \
+  git \
+  vim \
+  curl \
+  checkinstall \
+  xsel \
+  nginx
 
-log "Installing vim"
-sudo apt-get -y install vim
-
-log "Installing curl"
-sudo apt-get -y install curl
-
-log "Installing checkinstall"
-sudo apt-get -y install checkinstall
-
-log "Installing xsel"
-sudo apt-get -y install xsel
-
-log "Installing nginx"
-sudo apt-get -y install nginx
-
+# --------------------------------------------------
+# PHP
+# --------------------------------------------------
 if cmd_exists "php"; then
   skip "PHP"
 else
@@ -77,6 +62,9 @@ else
   sudo apt-get -y install "php$PHP_VERSION" "php$PHP_VERSION-mysql" "php$PHP_VERSION-fpm"
 fi
 
+# --------------------------------------------------
+# Composer
+# --------------------------------------------------
 if cmd_exists "composer"; then
   skip "Composer"
 else
@@ -95,6 +83,9 @@ else
   rm composer-setup.php
 fi
 
+# --------------------------------------------------
+# xcape
+# --------------------------------------------------
 if cmd_exists "xcape"; then
   skip "xcape"
 else
@@ -107,6 +98,9 @@ else
   sudo rm -rf $TEMP_DIR
 fi
 
+# --------------------------------------------------
+# ZSH
+# --------------------------------------------------
 if [[ $SHELL =~ "zsh" ]]; then
   skip "ZSH"
 else
@@ -116,6 +110,9 @@ else
   chsh -s $(which zsh)
 fi
 
+# --------------------------------------------------
+# NVM
+# --------------------------------------------------
 if [[ -e $HOME/.nvm ]]; then
   skip "nvm"
 else
@@ -123,8 +120,10 @@ else
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 fi
 
-# Some ubuntu versions have 'yarn' package installed by default
-# (https://github.com/yarnpkg/yarn/issues/2821)
+# --------------------------------------------------
+# Yarn
+# --------------------------------------------------
+# Some ubuntu versions have 'yarn' package installed by default (https://github.com/yarnpkg/yarn/issues/2821)
 if [[ -e $HOME/.cache/yarn ]]; then
   skip "yarn"
 else
@@ -135,6 +134,9 @@ else
   sudo apt-get update && sudo apt-get install -y --no-install-recommends yarn
 fi
 
+# --------------------------------------------------
+# rbenv
+# --------------------------------------------------
 if cmd_exists "rbenv"; then
   skip "rbenv"
 else
@@ -145,6 +147,9 @@ else
   gem install bundler
 fi
 
+# --------------------------------------------------
+# MySQL
+# --------------------------------------------------
 if cmd_exists "mysql"; then
   skip "mysql"
 else
@@ -155,11 +160,9 @@ else
 fi
 
 sudo apt-get -y install mysql-workbench-community
-# ---------------------------------------------------
-
 
 # ---------------------------------------------------
-# Install Docker
+# Docker & Docker Compose
 # ---------------------------------------------------
 if cmd_exists "docker"; then
     skip "docker"
@@ -191,8 +194,6 @@ else
   sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
 fi
-# ---------------------------------------------------
-
 
 # ---------------------------------------------------
 # Misc system configuration
@@ -204,10 +205,5 @@ else
   log "Increasing watch count"
   echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 fi
-# ---------------------------------------------------
 
-# ---------------------------------------------------
-# Finished!
-# ---------------------------------------------------
 log "ALL DONE!"
-
