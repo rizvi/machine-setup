@@ -1,12 +1,11 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
-
 # --------------------------------------------------
 # Load dependencies
 # --------------------------------------------------
-source $DIR/../config/variables.sh
-source $DIR/../lib/utils.sh
+cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
+source $cwd/../shared/config/variables.sh
+source $cwd/../shared/lib/utils.sh
 
 # --------------------------------------------------
 # Install homebrew formula

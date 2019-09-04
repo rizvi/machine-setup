@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
-
 # --------------------------------------------------
 # Load dependencies
 # --------------------------------------------------
-source $cwd/../config/variables.sh
-source $cwd/../lib/utils.sh
+cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
+source $cwd/../shared/config/variables.sh
+source $cwd/../shared/lib/utils.sh
 
 # --------------------------------------------------
 # Check if a cask is already installed

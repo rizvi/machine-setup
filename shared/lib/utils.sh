@@ -14,7 +14,7 @@ function cmd_exists {
 
 # Log a skipping message.
 function skip {
- echo "$1 already installed"
+ echo "$1 already setup"
 }
 
 
