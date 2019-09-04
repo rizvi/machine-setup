@@ -38,6 +38,7 @@ fi
 # --------------------------------------------------
 sudo apt-get -y install \
   cmake libssl-dev libreadline-dev zlib1g-dev \
+  x11-xkb-utils \
   git \
   vim \
   curl \
