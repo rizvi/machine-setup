@@ -18,12 +18,6 @@ sudo apt-get update
 # sudo apt-get dist-upgrade
 
 # --------------------------------------------------
-# Generic dependencies
-# --------------------------------------------------
-log "Installing generic dependencies"
-sudo apt-get -y install cmake libssl-dev libreadline-dev zlib1g-dev
-
-# --------------------------------------------------
 # SSH
 # --------------------------------------------------
 if [[ -e $HOME/.ssh/id_rsa ]]; then
@@ -34,6 +28,7 @@ else
 fi
 
 # --------------------------------------------------
+# libssl-devl libreadline-dev zlib1g-dev
 # git
 # vim
 # curl
@@ -41,8 +36,8 @@ fi
 # xsel
 # nginx
 # --------------------------------------------------
-log "Installing git"
 sudo apt-get -y install \
+  cmake libssl-dev libreadline-dev zlib1g-dev \
   git \
   vim \
   curl \
