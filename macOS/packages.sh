@@ -2,10 +2,15 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
 
+# --------------------------------------------------
+# Load dependencies
+# --------------------------------------------------
 source $DIR/../config/variables.sh
 source $DIR/../lib/utils.sh
 
-# Install brew formula
+# --------------------------------------------------
+# Install homebrew formula
+# --------------------------------------------------
 function install_formula {
   if cmd_exists $1; then
     skip $1
@@ -88,20 +93,27 @@ else
 fi
 
 # --------------------------------------------------
-# Brews
+# List of formulas to install
 # --------------------------------------------------
-install_formula composer
-install_formula ffmpeg
-install_formula httpd
-install_formula hub
-install_formula jq
-install_formula mysql
-install_formula nginx
-install_formula openssl
-install_formula passenger
-install_formula php
-install_formula python
-install_formula tree
-install_formula tmux
-install_formula wget
-install_formula youtube-dl
+formulas=(
+  "composer"
+  "ffmpeg"
+  "httpd"
+  "hub"
+  "jq"
+  "mysql"
+  "nginx"
+  "openssl"
+  "passenger"
+  "php"
+  "python"
+  "tree"
+  "tmux"
+  "wget"
+  "youtube-dl"
+)
+
+for formula in "${formulas[@]}"
+do
+  install_formula $formula
+done
