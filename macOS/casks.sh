@@ -32,6 +32,7 @@ function install_cask {
 # --------------------------------------------------
 casks=(
   "alfred"
+  "android-file-transfer"
   "clipy"
   "docker"
   "evernote"
