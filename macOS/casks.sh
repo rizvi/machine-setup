@@ -36,6 +36,7 @@ casks=(
   "clipy"
   "docker"
   "evernote"
+  "github"
   "google-chrome"
   "karabiner-elements"
   "lastpass"
