@@ -38,6 +38,7 @@ casks=(
   "evernote"
   "github"
   "google-chrome"
+  "intellij-idea"
   "karabiner-elements"
   "lastpass"
   "mysqlworkbench"

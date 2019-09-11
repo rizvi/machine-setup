@@ -100,6 +100,8 @@ formulas=(
   "httpd"
   "hub"
   "jq"
+  "maven"
+  "maven-completion"
   "mysql"
   "nginx"
   "openssl"

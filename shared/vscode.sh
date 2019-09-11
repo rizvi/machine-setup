@@ -51,3 +51,4 @@ code --install-extension pkief.material-icon-theme
 code --install-extension esbenp.prettier-vscode
 code --install-extension jpoissonnier.vscode-styled-components
 code --install-extension bmewburn.vscode-intelephense-client # PHP intellisense
+code --install-extension vscjava.vscode-java-pack # Java
