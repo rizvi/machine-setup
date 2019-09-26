@@ -43,12 +43,21 @@ fi
 # ---------------------------------------------------
 # Install extensions
 # ---------------------------------------------------
-code --install-extension vscodevim.vim 
-code --install-extension ms-vscode.vscode-typescript-tslint-plugin
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension equinusocio.vsc-material-theme
-code --install-extension pkief.material-icon-theme 
-code --install-extension esbenp.prettier-vscode
-code --install-extension jpoissonnier.vscode-styled-components
-code --install-extension bmewburn.vscode-intelephense-client # PHP intellisense
-code --install-extension vscjava.vscode-java-pack # Java
+extensions=(
+  "vscodevim.vim"
+  "ms-vscode.vscode-typescript-tslint-plugin"
+  "dbaeumer.vscode-eslint"
+  "equinusocio.vsc-material-theme"
+  "pkief.material-icon-theme"
+  "esbenp.prettier-vscode"
+  "jpoissonnier.vscode-styled-components"
+  "bmewburn.vscode-intelephense-client" # PHP intellisense
+  "vscjava.vscode-java-pack"
+  "rebornix.ruby"
+)
+
+for extension in "${extensions[@]}"
+do
+  code --install-extension $extension
+done
+
