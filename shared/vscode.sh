@@ -54,6 +54,7 @@ extensions=(
   "bmewburn.vscode-intelephense-client" # PHP intellisense
   "vscjava.vscode-java-pack"
   "rebornix.ruby"
+  "streetsidesoftware.code-spell-checker"
 )
 
 for extension in "${extensions[@]}"
