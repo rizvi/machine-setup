@@ -38,6 +38,7 @@ casks=(
   "evernote"
   "github"
   "google-chrome"
+  "onedrive"
   "intellij-idea"
   "karabiner-elements"
   "lastpass"
@@ -46,7 +47,6 @@ casks=(
   "sourcetree"
   "spectacle"
   "visual-studio-code"
-  # "rubymine"
   "virtualbox"
 )
 
