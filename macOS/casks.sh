@@ -42,6 +42,7 @@ casks=(
   "intellij-idea"
   "karabiner-elements"
   "lastpass"
+  "microsoft-word"
   "mysqlworkbench"
   "postman"
   "sourcetree"
