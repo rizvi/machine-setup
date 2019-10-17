@@ -2,5 +2,5 @@
 
 yarn global add \
   eslint \
-  typescript \
-  eslint
+  ts-node \
+  typescript 
