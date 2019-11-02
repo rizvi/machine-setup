@@ -108,6 +108,7 @@ formulas=(
   "passenger"
   "php"
   "python"
+  "sbt"
   "tree"
   "tmux"
   "wget"

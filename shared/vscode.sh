@@ -55,7 +55,9 @@ extensions=(
   "vscjava.vscode-java-pack"
   "rebornix.ruby"
   "streetsidesoftware.code-spell-checker"
+  "scala-lang.scala"
   "ms-vscode.cpptools" # C/C++
+  "ms-python.python"
 )
 
 for extension in "${extensions[@]}"
