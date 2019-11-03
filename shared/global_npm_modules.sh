@@ -3,4 +3,5 @@
 yarn global add \
   eslint \
   ts-node \
-  typescript 
+  typescript \
+  speed-test
