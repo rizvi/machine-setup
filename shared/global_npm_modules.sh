@@ -4,4 +4,5 @@ yarn global add \
   eslint \
   ts-node \
   typescript \
-  speed-test
+  speed-test \
+  vtop
