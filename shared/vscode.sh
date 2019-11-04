@@ -44,20 +44,22 @@ fi
 # Install extensions
 # ---------------------------------------------------
 extensions=(
-  "vscodevim.vim"
-  "ms-vscode.vscode-typescript-tslint-plugin"
-  "dbaeumer.vscode-eslint"
-  "equinusocio.vsc-material-theme"
-  "pkief.material-icon-theme"
-  "esbenp.prettier-vscode"
-  "jpoissonnier.vscode-styled-components"
   "bmewburn.vscode-intelephense-client" # PHP intellisense
-  "vscjava.vscode-java-pack"
-  "rebornix.ruby"
-  "streetsidesoftware.code-spell-checker"
-  "scala-lang.scala"
+  "dbaeumer.vscode-eslint"
+  "eg2.vscode-npm-script" # npm
+  "equinusocio.vsc-material-theme"
+  "esbenp.prettier-vscode"
+  "flowtype.flow-for-vscode" # flow
+  "jpoissonnier.vscode-styled-components"
   "ms-vscode.cpptools" # C/C++
+  "ms-vscode.vscode-typescript-tslint-plugin"
   "ms-python.python"
+  "pkief.material-icon-theme"
+  "rebornix.ruby"
+  "scala-lang.scala"
+  "streetsidesoftware.code-spell-checker"
+  "vscodevim.vim"
+  "vscjava.vscode-java-pack"
 )
 
 for extension in "${extensions[@]}"
