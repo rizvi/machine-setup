@@ -31,20 +31,15 @@ function install_cask {
 # List of casks to install
 # --------------------------------------------------
 casks=(
-  "4k-youtube-to-mp3"
-  "alfred"
   "android-file-transfer"
   "clipy"
   "docker"
-  "evernote"
   "github"
   "google-chrome"
   "intellij-idea"
   "karabiner-elements"
   "lastpass"
-  "microsoft-word"
   "mysqlworkbench"
-  "onedrive"
   "postman"
   "sourcetree"
   "spectacle"
