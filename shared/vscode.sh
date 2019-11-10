@@ -39,31 +39,3 @@ else
   log "Setting up VSCode snippets"
   ln -s "$DOTFILES_DIR/vscode/snippets" "$vscode_config_dir/snippets"
 fi
-
-# ---------------------------------------------------
-# Install extensions
-# ---------------------------------------------------
-extensions=(
-  "bmewburn.vscode-intelephense-client" # PHP intellisense
-  "dbaeumer.vscode-eslint"
-  "eg2.vscode-npm-script" # npm
-  "equinusocio.vsc-material-theme"
-  "esbenp.prettier-vscode"
-  "flowtype.flow-for-vscode" # flow
-  "jpoissonnier.vscode-styled-components"
-  "ms-vscode.cpptools" # C/C++
-  "ms-vscode.vscode-typescript-tslint-plugin"
-  "ms-python.python"
-  "pkief.material-icon-theme"
-  "rebornix.ruby"
-  "scala-lang.scala"
-  "streetsidesoftware.code-spell-checker"
-  "vscodevim.vim"
-  "vscjava.vscode-java-pack"
-)
-
-for extension in "${extensions[@]}"
-do
-  code --install-extension $extension
-done
-
