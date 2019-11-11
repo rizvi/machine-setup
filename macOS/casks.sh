@@ -33,6 +33,7 @@ function install_cask {
 casks=(
   "android-file-transfer"
   "clipy"
+  "dash"
   "docker"
   "github"
   "google-chrome"
