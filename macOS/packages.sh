@@ -112,7 +112,8 @@ formulas=(
   "tree"
   "tmux"
   "wget"
-  "youtube-dl"
+  "youtube-dl",
+  "zsh-syntax-highlighting"
 )
 
 for formula in "${formulas[@]}"

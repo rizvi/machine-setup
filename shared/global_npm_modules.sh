@@ -9,6 +9,7 @@ yarn global add \
   eslint \
   gtop \
   http-server \
+  json-server \
   live-server \
   localtunnel \
   node-dev \
