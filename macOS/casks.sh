@@ -31,6 +31,7 @@ function install_cask {
 # List of casks to install
 # --------------------------------------------------
 casks=(
+  "alfred"
   "android-file-transfer"
   "clipy"
   "dash"
@@ -45,6 +46,7 @@ casks=(
   "sourcetree"
   "spectacle"
   "toggl"
+  "transmission"
   "visual-studio-code"
   "virtualbox"
 )

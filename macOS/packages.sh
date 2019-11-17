@@ -99,6 +99,7 @@ formulas=(
   "ffmpeg"
   "httpd"
   "hub"
+  "imagemagick"
   "jq"
   "maven"
   "maven-completion"
