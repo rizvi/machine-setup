@@ -98,6 +98,7 @@ formulas=(
   "composer"
   "ffmpeg"
   "httpd"
+  "httrack"
   "hub"
   "imagemagick"
   "jq"

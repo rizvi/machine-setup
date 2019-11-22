@@ -39,6 +39,7 @@ casks=(
   "github"
   "google-chrome"
   "intellij-idea"
+  "iterm2"
   "karabiner-elements"
   "lastpass"
   "mysqlworkbench"
