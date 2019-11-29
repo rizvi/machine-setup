@@ -4,6 +4,7 @@ snaps=(
   "chromium"
   "code --classic"
   "firefox"
+  "hub --classic"
   "intellij-idea-ultimate --classic"
   "postman"
   "youtube-dl"
