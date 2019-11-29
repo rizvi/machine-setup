@@ -29,14 +29,9 @@ else
   ssh-add -K ~/.ssh/id_rsa
 fi
 
+
 # --------------------------------------------------
-# libssl-devl libreadline-dev zlib1g-dev
-# git
-# vim
-# curl
-# checkinstall
-# xsel
-# nginx
+# Packages
 # --------------------------------------------------
 sudo apt-get -y install \
   cmake libssl-dev libreadline-dev zlib1g-dev \
@@ -46,7 +41,8 @@ sudo apt-get -y install \
   curl \
   checkinstall \
   xsel \
-  nginx
+  nginx \
+  libpq-dev # For postgres
 
 # --------------------------------------------------
 # PHP

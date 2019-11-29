@@ -2,10 +2,11 @@
 
 snaps=(
   "chromium"
-  "firefox"
   "code --classic"
+  "firefox"
+  "intellij-idea-ultimate --classic"
   "postman"
-  "intellij-idea-ultimate --classic" 
+  "youtube-dl"
 )
 
 for snap in "${snaps[@]}"
