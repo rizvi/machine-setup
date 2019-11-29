@@ -42,7 +42,9 @@ sudo apt-get -y install \
   checkinstall \
   xsel \
   nginx \
-  libpq-dev # For postgres
+  libpq-dev \
+  zsh-syntax-highlighting \
+  pgadmin4
 
 # --------------------------------------------------
 # PHP
