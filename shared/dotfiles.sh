@@ -77,6 +77,7 @@ else
   log "Installing Oh My Zsh"
   git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
   ln -s $DOTFILES_DIR/aliases $HOME/.oh-my-zsh/custom/aliases.zsh
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
 
 # --------------------------------------------------
