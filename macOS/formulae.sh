@@ -109,6 +109,7 @@ formulas=(
   "openssl"
   "passenger"
   "php"
+  "postgresql"
   "python"
   "sbt"
   "tree"
