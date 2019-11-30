@@ -115,7 +115,8 @@ formulas=(
   "tree"
   "tmux"
   "wget"
-  "youtube-dl",
+  "youtube-dl"
+  "zsh-autosuggestions"
   "zsh-syntax-highlighting"
 )
 
