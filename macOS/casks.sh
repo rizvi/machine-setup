@@ -35,6 +35,7 @@ casks=(
   "android-file-transfer"
   "clipy"
   "dash"
+  "dbeaver-community"
   "docker"
   "firefox"
   "github"
