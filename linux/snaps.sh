@@ -7,6 +7,7 @@ snaps=(
   "hub --classic"
   "intellij-idea-ultimate --classic"
   "postman"
+  "rubymine --classic"
   "youtube-dl"
 )
 

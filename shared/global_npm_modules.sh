@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 yarn global add \
+  browser-sync \
   cost-of-modules \
   dark-mode-cli \
   david \
