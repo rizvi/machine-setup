@@ -111,6 +111,7 @@ formulas=(
   "php"
   "postgresql"
   "python"
+  "sass/sass/sass"
   "sbt"
   "tree"
   "tmux"

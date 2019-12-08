@@ -33,6 +33,7 @@ function install_cask {
 casks=(
   "alfred"
   "android-file-transfer"
+  "balsamiq-mockups"
   "clipy"
   "dash"
   "dbeaver-community"
