@@ -8,6 +8,7 @@ snaps=(
   "intellij-idea-ultimate --classic"
   "postman"
   "rubymine --classic"
+  "vlc"
   "youtube-dl"
 )
 
