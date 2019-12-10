@@ -4,6 +4,7 @@
 # Load dependencies
 # --------------------------------------------------
 cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null 2>&1 && pwd )"
+
 source $cwd/../shared/config/variables.sh
 source $cwd/../shared/lib/utils.sh
 
@@ -53,13 +54,17 @@ sudo apt-get -y install \
 # --------------------------------------------------
 # PHP
 # --------------------------------------------------
-if cmd_exists "php"; then
+if cmd_exists "phpp"; then
   skip "PHP"
 else
   log "Installing $PHP_VERSION"
   sudo add-apt-repository ppa:ondrej/php
   sudo apt-get update
-  sudo apt-get -y install "php$PHP_VERSION" "php$PHP_VERSION-mysql" "php$PHP_VERSION-fpm"
+  sudo apt-get -y install \
+    "php$PHP_VERSION" \
+    "php$PHP_VERSION-mysql" \
+    "php$PHP_VERSION-fpm" \
+    "php$PHP_VERSION-cli"
 fi
 
 # --------------------------------------------------
