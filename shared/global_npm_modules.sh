@@ -7,7 +7,6 @@ yarn global add \
   david \
   diff2html-cli \
   emma-cli \
-  eslint \
   gtop \
   http-server \
   json-server \

@@ -34,17 +34,21 @@ fi
 # Packages
 # --------------------------------------------------
 sudo apt-get -y install \
-  cmake libssl-dev libreadline-dev zlib1g-dev \
-  x11-xkb-utils \
-  git \
-  vim \
-  curl \
   checkinstall \
-  xsel \
-  nginx \
+  cmake \
+  copyq
+  curl \
   libpq-dev \
-  zsh-syntax-highlighting \
-  pgadmin4
+  libreadline-dev \
+  libssl-dev \
+  git \
+  nginx \
+  pgadmin4 \
+  vim \
+  x11-xkb-utils \
+  xsel \
+  zlib1g-dev \
+  zsh-syntax-highlighting
 
 # --------------------------------------------------
 # PHP

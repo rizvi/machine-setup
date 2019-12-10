@@ -5,7 +5,7 @@ snaps=(
   "code --classic"
   "firefox"
   "hub --classic"
-  "intellij-idea-ultimate --classic"
+  "phpstorm --classic"
   "postman"
   "rubymine --classic"
   "vlc"
