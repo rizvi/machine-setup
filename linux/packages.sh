@@ -62,9 +62,15 @@ else
   sudo apt-get update
   sudo apt-get -y install \
     "php$PHP_VERSION" \
+    "php$PHP_VERSION" \
     "php$PHP_VERSION-mysql" \
     "php$PHP_VERSION-fpm" \
-    "php$PHP_VERSION-cli"
+    "php$PHP_VERSION-cli" \
+    "php$PHP_VERSION-bcmath" \
+    "php$PHP_VERSION-json" \
+    "php$PHP_VERSION-mbstring" \
+    "php$PHP_VERSION-xml" \
+    "php$PHP_VERSION-zip"
 fi
 
 # --------------------------------------------------
