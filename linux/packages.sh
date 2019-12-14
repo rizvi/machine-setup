@@ -54,7 +54,7 @@ sudo apt-get -y install \
 # --------------------------------------------------
 # PHP
 # --------------------------------------------------
-if cmd_exists "phpp"; then
+if cmd_exists "php"; then
   skip "PHP"
 else
   log "Installing $PHP_VERSION"
@@ -168,6 +168,15 @@ else
   sudo apt-get -y install mysql-client libmysqlclient-dev mysql-server
 
   sudo mysql_secure_installation
+fi
+
+if cmd_exists "wp"; then
+  skip "wp-cli"
+else
+  log "Installing wp-cli"
+  curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  chmod +x wp-cli.phar
+  sudo mv wp-cli.phar /usr/local/bin/wp
 fi
 
 # ---------------------------------------------------
